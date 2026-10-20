@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "env": {
+    "EXTRACTOR": "tikwm",
+    "TIKWM_API": "https://www.tikwm.com/api/"
+  },
+  "regions": ["sin1"],
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api" }
+  ]
+}

@@ -22,8 +22,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 
-// Serve frontend statis (folder parent: D:\mini snaptik)
-const FRONTEND_DIR = path.join(__dirname, '..'); // backend/.. = root proyek
+// Serve frontend statis (folder public/ di root proyek)
+const FRONTEND_DIR = path.join(__dirname, '..', 'public');
 app.use(express.static(FRONTEND_DIR));
 
 // Middleware
@@ -639,10 +639,15 @@ if (tiktokService.EXTRACTOR_MODE === 'tikwm') {
     console.warn('- Linux:   install via pip (pip install yt-dlp)');
     console.warn('Atau set EXTRACTOR=tikwm untuk memakai TikWM sepenuhnya.\n');
 }
-app.listen(PORT, HOST, () => {
-    console.log(`\n🚀 MyTTDownloader API berjalan di:`);
-    console.log(`   http://localhost:${PORT}`);
-    console.log(`   API Info:   http://localhost:${PORT}/api/info?url=<TIKTOK_URL>`);
-    console.log(`   API Download: http://localhost:${PORT}/api/video?url=<TIKTOK_URL>`);
-    console.log('\nContoh: http://localhost:3000/api/info?url=https://vm.tiktok.com/xxxxxx/\n');
-});
+// Export app untuk Vercel serverless (api/index.js) — listen hanya saat dijalankan langsung (lokal/Render)
+module.exports = app;
+
+if (require.main === module) {
+    app.listen(PORT, HOST, () => {
+        console.log(`\n🚀 MyTTDownloader API berjalan di:`);
+        console.log(`   http://localhost:${PORT}`);
+        console.log(`   API Info:   http://localhost:${PORT}/api/info?url=<TIKTOK_URL>`);
+        console.log(`   API Download: http://localhost:${PORT}/api/video?url=<TIKTOK_URL>`);
+        console.log('\nContoh: http://localhost:3000/api/info?url=https://vm.tiktok.com/xxxxxx/\n');
+    });
+}
