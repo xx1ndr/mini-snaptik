@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Downloader - Download Video TikTok Without Watermark</title>
+    <meta name="description" content="Free TikTok Video Downloader - Download TikTok videos without watermark, HD quality, works on all devices. 100% free and easy to use.">
+    <meta name="keywords" content="tiktok downloader, download tiktok video, tiktok video downloader, no watermark, save tiktok">
+    <meta name="author" content="MyTTDownloader">
+    <meta name="theme-color" content="#6C63FF">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">TT</span>
+                <span class="logo-text">My<span class="logo-highlight">TT</span>Downloader</span>
+            </a>
+            <nav class="nav">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-to" class="nav-link">How to Use</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg">
+                <div class="hero-blob blob-1"></div>
+                <div class="hero-blob blob-2"></div>
+                <div class="hero-blob blob-3"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">TikTok Video Downloader</h1>
+                <p class="hero-subtitle">Free TikTok Downloader - No watermark, HD quality, works on all devices</p>
+
+                <form id="download-form" class="download-form">
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="url-input" 
+                            class="url-input" 
+                            placeholder="Paste TikTok video link here..."
+                            required
+                        >
+                        <button type="button" id="paste-btn" class="paste-btn" title="Paste from clipboard">
+                            <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <button type="submit" id="submit-btn" class="submit-btn">
+                        <svg id="spinner" class="spinner hidden" width="20" height="20" fill="none" viewBox="0 0 24 24">
+                            <circle class="spinner-circle" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="spinner-path" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                        </svg>
+                        <span id="submit-text">Download</span>
+                    </button>
+                </form>
+
+                <div id="error-message" class="error-message hidden"></div>
+            </div>
+        </section>
+
+        <section id="result-section" class="result-section hidden">
+            <div class="result-container">
+                <div class="result-card">
+                    <div class="result-info">
+                        <img id="result-thumbnail" class="result-thumbnail" src="" alt="Thumbnail">
+                        <div class="result-details">
+                            <h3 id="result-title" class="result-title"></h3>
+                            <p id="result-author" class="result-author"></p>
+                            <div id="result-stats" class="result-stats"></div>
+                        </div>
+                    </div>
+                    <div id="download-buttons" class="download-buttons"></div>
+                    <div id="images-section" class="images-section hidden">
+                        <h4 class="images-title">📸 Foto dari Video Ini</h4>
+                        <div id="images-grid" class="images-grid"></div>
+                        <a id="download-all-images-btn" class="download-btn secondary" href="#" hidden>
+                            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Download Semua Gambar (ZIP)
+                        </a>
+                    </div>
+                    <button id="new-download-btn" class="new-download-btn">
+                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                        Download Another Video
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <div class="about-card">
+                    <h2 class="section-title gradient-text">Download TikTok Videos Without Watermark FREE</h2>
+                    <p class="about-text">
+                        MyTTDownloader is one of the best HD TikTok Downloaders available online. 
+                        Our tool helps users download TikTok videos without a watermark in MP4 format 
+                        and in HD quality. You are not required to install any software on your computer 
+                        or mobile phone. All you need is a TikTok video link, paste the link and you can 
+                        save your TikTok video instantly.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to" class="how-to-section">
+            <div class="container">
+                <h2 class="section-title">How to Download TikTok Videos Without Watermarks</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                            </svg>
+                        </div>
+                        <h4 class="step-title">Copy Video Link</h4>
+                        <p class="step-desc">Open TikTok app, find the video, tap Share and copy the video link</p>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h4 class="step-title">Paste Link</h4>
+                        <p class="step-desc">Paste the link into the input field above</p>
+                    </div>
+                    <div class="step-connector"></div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                        </div>
+                        <h4 class="step-title">Download</h4>
+                        <p class="step-desc">Click Download and save the video without watermark to your device</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">TikTok Download Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">No Watermarks</h4>
+                        <p class="feature-desc">Remove watermarks from TikTok videos for better quality</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">All Devices</h4>
+                        <p class="feature-desc">Download TikTok videos on any device: mobile, PC, or tablet</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">Browser Only</h4>
+                        <p class="feature-desc">No need to download or install any software</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">Always Free</h4>
+                        <p class="feature-desc">100% free forever. No hidden charges</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">Slideshow to MP4</h4>
+                        <p class="feature-desc">Convert TikTok photo slideshows to MP4 video</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h4 class="feature-title">HD Quality</h4>
+                        <p class="feature-desc">Download in the highest resolution available</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>How to Download TikTok video without watermark?</span>
+                            <svg class="faq-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>1. Open TikTok app on your phone or browser.</p>
+                            <p>2. Choose the video you want to download.</p>
+                            <p>3. Click the Share button at the right bottom.</p>
+                            <p>4. Click the Copy Link button.</p>
+                            <p>5. Go back to MyTTDownloader and paste the link.</p>
+                            <p>6. Click Download and save the video.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Is this tool free to use?</span>
+                            <svg class="faq-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Yes, this tool is 100% free to use. There are no hidden charges or subscription fees.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Do I need to install any app?</span>
+                            <svg class="faq-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>No, you don't need to install any application or browser extension. Just use your web browser.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Is my data safe?</span>
+                            <svg class="faq-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Yes, we respect your privacy. We don't store any of your downloaded videos or personal data.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Where are downloaded videos saved?</span>
+                            <svg class="faq-icon" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Downloaded videos are saved to your browser's default download folder. You can change this in your browser settings.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-logo">My<span class="logo-highlight">TT</span>Downloader</span>
+                <p class="footer-text">Free TikTok Video Downloader Without Watermark</p>
+                <p class="footer-copyright">&copy; 2024 MyTTDownloader. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

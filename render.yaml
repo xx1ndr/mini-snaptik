@@ -1,0 +1,35 @@
+# Render.com deployment config
+# Cara pakai:
+# 1. Push folder ini ke GitHub
+# 2. Di Render.com: New + -> Blueprint -> pilih repo ini
+#    Render akan otomatis baca file ini dan deploy.
+#    (Atau: New + -> Web Service -> pilih repo, masukkan settings manual di bawah)
+#
+# Alternatif manual (Web Service):
+#   - Root Directory : (kosongkan, root proyek sudah berisi server.js path backend)
+#   - Build Command  : npm install --prefix backend
+#   - Start Command  : node backend/server.js
+#   - Environment    : Node 20+
+
+services:
+  - type: web
+    name: myttdownloader
+    runtime: node
+    plan: free
+    buildCommand: npm install --prefix backend
+    startCommand: node backend/server.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      # Mode ekstraksi: 'tikwm' = pakai TikWM API sepenuhnya (TANPA yt-dlp).
+      # Ini yang paling andal untuk lingkungan cloud/datacenter karena
+      # TikTok memblokir IP datacenter untuk yt-dlp langsung.
+      # 'auto' = coba yt-dlp dulu, fallback TikWM (butuh binary yt-dlp terinstall).
+      - key: EXTRACTOR
+        value: tikwm
+      - key: TIKWM_API
+        value: https://www.tikwm.com/api/
+      - key: HOST
+        value: 0.0.0.0
+    autoDeploy: true

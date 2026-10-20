@@ -1,0 +1,31 @@
+# Node
+node_modules/
+backend/node_modules/
+*.log
+npm-debug.log*
+
+# Environment
+.env
+backend/.env
+
+# Binary besar / tidak perlu di-commit
+backend/bin/yt-dlp.exe
+backend/bin/yt-dlp
+backend/bin/cloudflared.exe
+
+# File cookies (jangan pernah commit!)
+backend/cookies.txt
+
+# Temp download
+*.tmp
+temp/
+backend/temp/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
